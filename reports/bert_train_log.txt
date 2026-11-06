@@ -1,0 +1,60 @@
+[设备] NVIDIA GeForce RTX 4060 Laptop GPU / torch 2.14.1+cu126
+[本地权重] 使用 E:\中文评论情感分析系统\models\pretrained\chinese-roberta-wwm-ext
+
+加载预训练模型：E:\中文评论情感分析系统\models\pretrained\chinese-roberta-wwm-ext（HF_ENDPOINT=https://hf-mirror.com）
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 23404.93it/s]
+[transformers] [1mBertForSequenceClassification LOAD REPORT[0m from: E:\中文评论情感分析系统\models\pretrained\chinese-roberta-wwm-ext
+Key                                        | Status     | 
+-------------------------------------------+------------+-
+cls.predictions.transform.dense.bias       | UNEXPECTED | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED | 
+cls.seq_relationship.bias                  | UNEXPECTED | 
+cls.predictions.decoder.weight             | UNEXPECTED | 
+cls.seq_relationship.weight                | UNEXPECTED | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED | 
+cls.predictions.transform.dense.weight     | UNEXPECTED | 
+cls.predictions.bias                       | UNEXPECTED | 
+classifier.weight                          | MISSING    | 
+classifier.bias                            | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+训练配置：epochs=3 batch_size=16 max_length=256 lr=2e-05 seed=42 训练样本=6212 每 epoch 389 step
+  step 50/389  loss=0.4755  lr=8.62e-06
+  step 100/389  loss=0.0943  lr=1.72e-05
+  step 150/389  loss=0.2309  lr=1.94e-05
+  step 200/389  loss=0.3296  lr=1.84e-05
+  step 250/389  loss=0.4052  lr=1.75e-05
+  step 300/389  loss=0.1724  lr=1.65e-05
+  step 350/389  loss=0.1199  lr=1.55e-05
+epoch 1：loss=0.3267  val acc=0.9137  macro-F1=0.8974  用时 124.2s
+  step 50/389  loss=0.0150  lr=1.39e-05
+  step 100/389  loss=0.1472  lr=1.29e-05
+  step 150/389  loss=0.0470  lr=1.20e-05
+  step 200/389  loss=0.1885  lr=1.10e-05
+  step 250/389  loss=0.0808  lr=1.00e-05
+  step 300/389  loss=0.0157  lr=9.10e-06
+  step 350/389  loss=0.1142  lr=8.14e-06
+epoch 2：loss=0.1722  val acc=0.9137  macro-F1=0.9013  用时 124.0s
+  step 50/389  loss=0.0304  lr=6.45e-06
+  step 100/389  loss=0.0846  lr=5.50e-06
+  step 150/389  loss=0.0197  lr=4.55e-06
+  step 200/389  loss=0.0074  lr=3.60e-06
+  step 250/389  loss=0.0126  lr=2.65e-06
+  step 300/389  loss=0.0051  lr=1.69e-06
+  step 350/389  loss=0.0917  lr=7.42e-07
+epoch 3：loss=0.0992  val acc=0.9149  macro-F1=0.9016  用时 124.3s
+
+按验证集 macro-F1 选用 epoch 3 的权重
+
+测试集结果（BERT 对比模型）：
+  Accuracy  0.9279
+  Precision 0.9542（正面类）
+  Recall    0.9398（正面类）
+  F1        0.9470（正面类）  macro-F1 0.9173
+  混淆矩阵 [[221, 24], [32, 500]]  行=真实(负面/正面)
+  测试集正负样本：{'负面': 245, '正面': 532}
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.17it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.17it/s]
+
+模型与结果已保存到 E:\中文评论情感分析系统\models\bert

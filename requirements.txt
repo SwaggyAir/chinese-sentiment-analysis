@@ -1,0 +1,10 @@
+# 核心依赖：数据、基线模型与网页界面
+pandas>=2.0
+numpy>=1.24
+scikit-learn>=1.3
+joblib>=1.2
+streamlit>=1.32
+
+# 可选依赖：仅训练/加载 BERT 对比模型时需要，请装在带 CUDA 的环境中
+# torch>=2.2
+# transformers>=4.40
